@@ -9,7 +9,7 @@
 <p><b>Contacted:</b> <%= $job->{contacted} %></p>
 <p><b>Scheduled:</b> <%= $job->{scheduled} %></p>
 <p><b>Estimate:</b> <%= $job->{estimate} %></p>
-<p><b>Address:</b><%= $job->{address} %></p>
+<p><b>Address:</b> <%= link_to $job->{address} => "https://www.google.com/maps/search/$job->{address}" =~ s/\s/+/rg %></p>
 <p><b>Phone:</b> <%= $job->{phone} %></p>
 <p><b>Description:</b> <%= $job->{description} %></p>
 <p><b>Materials Needed:</b><br>
