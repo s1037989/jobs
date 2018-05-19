@@ -1,0 +1,24 @@
+body {
+    background: url(../img/sky.jpg) center 55px no-repeat transparent;
+}
+
+nav li a {
+    color: #FD8232;
+}
+
+p.headline {color: #666666;}
+
+nav .btn-default, .main-form .btn-default {background-color: #8D9F4D; border-color: #8D9F4D;}
+nav .btn-default:hover {background-color: #9EAF5E; border-color: #9EAF5E;}
+
+.main-form form{background-color: #FD8232;}
+.main-form label, .main-form p {color: #ffffff;}
+.main-form .btn-default {background-color: #FFFFFF; border-color: #FFFFFF; color: #444;}
+.main-form .btn-default:hover {background-color: #FFFFFF; border-color: #FFFFFF; color: #444;}
+
+.feature-box {
+    background-color: #FCFBE9;
+}
+
+#footer {background-color: #555555;}
+#footer .nav a:hover {background-color: #555555 ;}

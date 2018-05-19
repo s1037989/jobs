@@ -1,0 +1,12 @@
+% layout 'jobs', title => $job->{name};
+% content headline => '';
+% content main_form => '';
+% content overlay => begin
+  <h3>Printed!</h3>
+% end
+% content solid => begin
+<%= $printer %>
+%= link_to show_job => {id => $job->{id}} => (class => 'btn btn-success btn-sm') => begin
+  <span class="glyphicon glyphicon-circle-arrow-left"></span> Return
+% end
+% end

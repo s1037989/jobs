@@ -1,0 +1,24 @@
+body {
+    background: url(../img/countryside.jpg) center 55px no-repeat transparent;
+}
+
+nav li a {
+    color: #7F6461;
+}
+
+p.headline {color: #614C49;}
+
+nav .btn-default, .main-form .btn-default {background-color: #59A3AC; border-color: #59A3AC;}
+nav .btn-default:hover {background-color: #60B4BD; border-color: #60B4Bd;}
+
+.main-form form{background-color: #84414A;}
+.main-form label, .main-form p {color: #F7F5DC;}
+.main-form .btn-default {background-color: #F7F5DC; border-color: #F7F5DC; color: #614C49;}
+.main-form .btn-default:hover {background-color: #F7F5DC; border-color: #F7F5DC; color: #614C49;}
+
+.feature-box {
+    background-color: #F7F5DC;
+}
+
+#footer {background-color: #7F6461;}
+#footer .nav a:hover {background-color: #7F6461;}

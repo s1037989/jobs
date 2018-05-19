@@ -1,0 +1,12 @@
+<html>
+<body>
+<div>
+<h2><%= $job->{name} %></h2>
+<p><b>Contacted:</b> <%= $job->{contacted} %></p>
+<p><b>Scheduled:</b> <%= $job->{scheduled} %></p>
+<p><b>Address:</b><%= $job->{address} %></p>
+<p><b>Phone:</b> <%= $job->{phone} %></p>
+<p><b>Description:</b> <%= $job->{description} %></p>
+</div>
+</body>
+</html>

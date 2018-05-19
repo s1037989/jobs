@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title><%= title %></title>
+        %= stylesheet '/assets/css/main.css'
+        %= stylesheet '/assets/css/earthy.css'
+        %= stylesheet 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+        %= stylesheet 'https://fonts.googleapis.com/css?family=Muli:400,700|News+Cycle'
+        %= javascript 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+        %= content head => begin
+        % end
+    </head>
+    <body>
+        <div class="container">
+            <!-- Top navigation -->
+            <nav id="primary" class="navbar">
+                 <div class="container-fluid">
+                     <!-- I recommend keeping 3 or fewer items in the navigation, or they might
+                          not all fit nicely on mobile. If this ends up being a problem sometime,
+                          just let me know and I'll change the mobile setup. -->
+                     <ul class="nav navbar-nav navbar-right">
+                         % if ( current_route eq 'index' ) {
+                           <li><%= link_to 'Internal Page' => 'internal' %></li>
+                         % } else {
+                           <li><%= link_to 'Jobs' => 'jobs' %></li>
+                         % }
+                         <li><%= link_to 'New job' => 'create_job' %></li>
+                     </ul>
+                 </div>
+             </nav>
+             <!-- Large white heading -->
+             <h1><%= title %></h1>
+        </div>
+        <!-- Any content inside the "overlay" div will have the background image visible behind it.
+             If your content is too long, it will probably extent past the bottom of the image. If
+             this is the case, try moving some of the less important stuff to the "solid" div below,
+             or you can upload a taller image. -->
+        <div id="overlay">
+            <div class="container">
+                <!-- The class "main-form" is needed on the form at the top of the page to have the
+                     correct styling. All other classes included within the form are straight bootstrap.
+                     To turn the form off, just don't put a <form> inside this div. -->
+                %= content main_form => begin
+                <div class="main-form">
+                <form>
+                   <p>Form Title Here</p>
+                    <div class="form-group">
+                        <label for="formName">Name</label>
+                        <input type="text" class="form-control" id="formName" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="formEmail">Email</label>
+                        <input type="email" class="form-control" id="formEmail" placeholder="Email">
+                    </div>
+                    <button type="submit" class="btn btn-default">Sign Up</button>
+                </form>
+                </div>
+                % end
+                <!-- This is the bold headline shown as the first line of text inside the white overlay
+                     on the image. The text can be changed or removed. The "headline" class is required
+                     for proper styling. -->
+                %= content headline => begin
+                <p class="headline">Really Catchy Headline</p>
+                <h2>Here's Why You Need This:</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet.</p>
+                % end
+                %= content overlay => begin
+                <h2>Internal Page Content</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet.</p>
+                % end
+            </div>
+        </div>
+        <!-- Any text inside the "solid" div will have a solid white background behind it -->
+        <div id="solid">
+            <div class="container">
+                <!-- Light blue box on the bottom left of the page. This box is set to always stay on
+                     the left side of the page and anything that comes after it will wrap around to its
+                     right. To remove this, remove the entire div. -->
+                %= content solid => begin
+                <h2>Tables, Forms, Text, Images, Etc.</h2>
+                <div class="feature-box">
+                    <p>The color of this box will change with each color scheme. The box is meant to bring attention to featured content, reviews, etc. If you have nothing to feature, just don't use it. Simple!</p>
+                    <p>
+                      <ul>
+                        <li><%== '<strong>' unless session 'color' %><%= link_to 'Default' => 'color', {color => ''} %><%== '</strong>' unless session 'color' %></li>
+                        % for ( qw/bold bright earthy/ ) {
+                        <li><%== '<strong>' if $_ eq session 'color' %><%= link_to ucfirst($_) => 'color', {color => $_} %><%== '</strong>' if $_ eq session 'color' %></li>
+                        % }
+                      </ul>
+                    </p>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Lorem ipsum dolor sit amet.</p>
+                % end
+            </div>
+        </div>
+        <!-- Footer navigation -->
+        <div id="footer" class="container-fluid">
+             <nav>
+                 <div class="container-fluid">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="#"><%= config('copyright') %></a></li>
+                    </ul>
+                 </div>
+             </nav>
+        </div>
+    </body>
+</html>

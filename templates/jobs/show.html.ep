@@ -1,0 +1,29 @@
+% layout 'jobs', title => $job->{name};
+% content headline => '';
+% content main_form => '';
+% content overlay => begin
+  <h3>Welcome!</h3>
+% end
+% content solid => begin
+<h2><%= $job->{name} %></h2>
+<p><b>Contacted:</b> <%= $job->{contacted} %></p>
+<p><b>Scheduled:</b> <%= $job->{scheduled} %></p>
+<p><b>Estimate:</b> <%= $job->{estimate} %></p>
+<p><b>Address:</b><%= $job->{address} %></p>
+<p><b>Phone:</b> <%= $job->{phone} %></p>
+<p><b>Description:</b> <%= $job->{description} %></p>
+<p><b>Materials Needed:</b><br>
+% foreach ( grep { $job->{$_} } qw/grinder chipper/ ) {
+  <li><%= ucfirst($_) %></li>
+% }
+</p>
+%= link_to edit_job => {id => $job->{id}} => (class => 'btn btn-success btn-sm') => begin
+  <span class="glyphicon glyphicon-edit"></span> Edit
+% end
+%= link_to print_job => {id => $job->{id}} => (class => 'btn btn-success btn-sm') => begin
+  <span class="glyphicon glyphicon-print"></span> Print
+% end
+%= link_to jobs => (class => 'btn btn-success btn-sm') => begin
+  <span class="glyphicon glyphicon-circle-arrow-left"></span> Return
+% end
+% end

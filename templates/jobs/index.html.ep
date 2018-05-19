@@ -1,0 +1,45 @@
+% layout 'jobs', title => 'Jobs';
+% content headline => '';
+% content main_form => '';
+% content overlay => begin
+  <h3>Welcome!</h3>
+% end
+% content solid => begin
+%= form_for 'jobs_week' => begin
+<p><%= date_field week => (session('week') || Date::Simple::today->as_iso) %> <%= number_field weeks => (session('weeks') || 1), min => 1, max => 5 %> <%= submit_button 'Go' %></p>
+% end
+<div class="container">
+  <div class="row seven-cols">
+    <div class="day col-lg-1 col-md-3 col-sm-4 col-xs-6">Sunday</div>
+    <div class="day col-lg-1 col-md-3 col-sm-4 col-xs-6">Monday</div>
+    <div class="day col-lg-1 col-md-3 col-sm-4 col-xs-6">Tuesday</div>
+    <div class="day col-lg-1 col-md-3 col-sm-4 col-xs-6">Wednesday</div>
+    <div class="day col-lg-1 col-md-3 col-sm-4 col-xs-6">Thursday</div>
+    <div class="day col-lg-1 col-md-3 col-sm-4 col-xs-6">Friday</div>
+    <div class="day col-lg-1 col-md-3 col-sm-4 col-xs-6">Saturday</div>
+  </div>
+</div>
+<div class="container">
+% for my $week (map { Date::Simple->new($_) } sort keys %$jobs) {
+  <div class="row seven-cols">
+  % my $c = 0;
+  % for my $day (@{$jobs->{$week}}) {
+    % my $job_totals = c(@$day)->map(sub{$_->{estimate}})->reduce(sub{$a+$b}, 0);
+    % my $color;
+    % $color = 'green' if $job_totals > 0;
+    % $color = 'yellow' if $job_totals > 1000;
+    % $color = 'red' if $job_totals > 2000;
+    <div class="box col-lg-1 col-md-3 col-sm-4 col-xs-6">
+    <div class="strip <%= $color %>">
+      <div class="date"><%= $week->as_str('%B') unless $c++ %> <%= link_to url_for('create_job')->query(scheduled => $week->as_iso)->to_abs => begin %><%= ($week++)->day %><% end %></div>
+      <div class="job_totals"><span class="<%= $color %>"><%= currency $job_totals %></span></div>
+    </div>
+    % for (@$day) {
+      <div class="job_name"><%= link_to $_->{name} => 'show_job', {id => $_->{id}} %></div>
+    % }
+    </div>
+  % }
+  </div>
+% }
+</div>
+% end

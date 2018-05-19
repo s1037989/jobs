@@ -1,0 +1,16 @@
+% layout 'jobs', title => 'Edit job';
+% content headline => '';
+% content main_form => '';
+% content overlay => begin
+  <h3>Welcome!</h3>
+% end
+% content solid => begin
+<h2>Edit job</h2>
+%= include 'jobs/_form', caption => '✔ Update', target => 'update_job'
+%= link_to url_for(remove_job => {id => $job->{id}})->query(_method => 'DELETE') => (class => 'btn btn-success btn-sm') => begin
+  <span class="glyphicon glyphicon-trash"></span> Remove
+% end
+%= link_to show_job => {id => $job->{id}} => (class => 'btn btn-success btn-sm') => begin
+  <span class="glyphicon glyphicon-remove"></span> Cancel
+% end
+% end

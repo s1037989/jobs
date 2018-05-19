@@ -1,0 +1,39 @@
+%= form_for $target => begin
+  %= label_for name => 'Name'
+  <br>
+  %= text_field name => $job->{name}
+  <br>
+  %= label_for contacted => 'Contacted'
+  <br>
+  %= date_field contacted => $job->{contacted}
+  <br>
+  %= label_for scheduled => 'Scheduled'
+  <br>
+  %= date_field scheduled => $job->{scheduled} || param 'scheduled'
+  <br>
+  %= label_for estimate => 'Estimate'
+  <br>
+  %= number_field estimate => $job->{estimate}
+  <br>
+  %= label_for address => 'Address'
+  <br>
+  %= text_field address => $job->{address}
+  <br>
+  %= label_for phone => 'Phone'
+  <br>
+  %= text_field phone => $job->{phone}
+  <br>
+  %= label_for description => 'Description'
+  <br>
+  %= text_field description => $job->{description}
+  <br>
+  %= label_for grinder => 'Grinder'
+  <br>
+  %= check_box grinder => 1, $job->{grinder} ? (checked => undef) : ()
+  <br>
+  %= label_for chipper => 'Chipper'
+  <br>
+  %= check_box chipper => 1, $job->{chipper} ? (checked => undef) : ()
+  <br>
+  %= submit_button $caption => (class => 'btn btn-success btn-sm')
+% end

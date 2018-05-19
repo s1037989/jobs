@@ -1,0 +1,13 @@
+% layout 'jobs', title => 'New job';
+% content headline => '';
+% content main_form => '';
+% content overlay => begin
+  <h3>Welcome!</h3>
+% end
+% content solid => begin
+<h2>New job</h2>
+%= include 'jobs/_form', caption => '✔ Create', target => 'store_job'
+%= link_to show_job => {id => $job->{id}} => (class => 'btn btn-success btn-sm') => begin
+  <span class="glyphicon glyphicon-remove"></span> Cancel
+% end
+% end

@@ -1,0 +1,24 @@
+body {
+    background: url(../img/dog.jpg) center 55px no-repeat transparent;
+}
+
+nav li a {
+    color: #7E7E7E;
+}
+
+p.headline {color: #7E7E7E;}
+
+nav .btn-default, .main-form .btn-default {background-color: #13D1E9; border-color: #13D1E9;}
+nav .btn-default:hover {background-color: #02C0D8; border-color: #02C0D8;}
+
+.main-form form{background-color: #B23A2F;}
+.main-form label, .main-form p {color: #ffffff;}
+.main-form .btn-default {background-color: #700401; border-color: #700401; color: #fff;}
+.main-form .btn-default:hover {background-color: #600300; border-color: #600300; color: #fff;}
+
+.feature-box {
+    background-color: #F1F1F1;
+}
+
+#footer {background-color: #700401;}
+#footer .nav a:hover {background-color: #700401;}
